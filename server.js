@@ -11,7 +11,7 @@ const fs = require('fs')
 const db = require('./database.js') 
 
 args['port']
-const port = args.port || 5000
+const port = args.port || 5555
 
 // See what is stored in the object produced by minimist
 console.log(args)
