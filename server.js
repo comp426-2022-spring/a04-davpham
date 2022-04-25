@@ -31,12 +31,15 @@ server.js [options]
 
 --help	Return this message and exit.
 `)
-// If --help or -h, echo help text to STDOUT and exit
 
+// If --help or -h, echo help text to STDOUT and exit
 if (args.help || args.h) {
     console.log(help)
     process.exit(0)
 }
+
+app.use(express.urlencoded( {extended: true} ))
+app.use(express.json())
 
 // Middleware
 app.use((req, res, next) => {
