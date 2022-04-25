@@ -33,6 +33,21 @@ if (args.help || args.h) {
 }
 
 
+app.use((req, res, next) => {
+    let logdata = {
+      remoteaddr: req.ip,
+      remoteuser: req.user,
+      time: Date.now(),
+      method: req.method,
+      url: req.url,
+      protocol: req.protocol,
+      httpversion: req.httpVersion,
+      status: res.statusCode,
+      referer: req.headers['referer'],
+      useragent: req.headers['user-agent']
+  }
+})
+
 
 // Start an app server
 const server = app.listen(port, () => {
