@@ -34,7 +34,7 @@ if (args.help || args.h) {
     process.exit(0)
 }
 
-// Middlware
+// Middleware
 app.use((req, res, next) => {
     let logdata = {
       remoteaddr: req.ip,
