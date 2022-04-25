@@ -21,7 +21,7 @@ if (row === undefined) {
         CREATE TABLE accesslog ( id INTEGER PRIMARY KEY, remoteaddr TEXT, remoteuser TEXT, time TEXT, method TEXT, url TEXT, protocol TEXT, httpversion TEXT, status TEXT, referer TEXT, useragent TEXT );
     `;
 // Execute SQL commands that we just wrote above.
-    db.exec(sqlInitTwo);
+    db.exec(sqlInit);
 // Echo information about what we just did to the console.
     //console.log('Your database has been initialized with a new table and two entries containing a username and password.');
 } else {
