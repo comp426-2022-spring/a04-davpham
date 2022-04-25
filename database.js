@@ -8,8 +8,10 @@ const db = new Database('log.db');
 const stmt = db.prepare(`
     SELECT name FROM sqlite_master WHERE type='table' and name='userinfo';`
     );
+
 // Define row using `get()` from better-sqlite3
 let row = stmt.get();
+
 // Check if there is a table. If row is undefined then no table exists.
 if (row === undefined) {
 // Echo information about what you are doing to the console.
@@ -21,10 +23,11 @@ if (row === undefined) {
 // Execute SQL commands that we just wrote above.
     db.exec(sqlInit);
 // Echo information about what we just did to the console.
-    console.log('Your database has been initialized with a new table and two entries containing a username and password.');
+    //console.log('Your database has been initialized with a new table and two entries containing a username and password.');
 } else {
 // Since the database already exists, echo that to the console.
     console.log('Database exists.')
 }
+
 // Export all of the above as a module so that we can use it elsewhere.
 module.exports = db
