@@ -5,6 +5,7 @@ const min = require('minimist')
 const args = min(process.argv.slice(2))
 
 const morgan = require('morgan')
+const fs = require('fs')
 
 const db = require('./database.js')
 
@@ -77,7 +78,7 @@ if (args.log == 'true'){
   // Use morgan for logging to files
   // Create a write stream to append (flags: 'a') to a file
   const WRITESTREAM = fs.createWriteStream('FILE', { flags: 'a' })
-  
+
   // Set up the access logging middleware
   app.use(morgan('FORMAT', { stream: WRITESTREAM }))
 }
