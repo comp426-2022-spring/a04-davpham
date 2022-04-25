@@ -9,6 +9,7 @@ const port = args.port || 5000
 
 // See what is stored in the object produced by minimist
 console.log(args)
+
 // Store help text 
 const help = (`
 server.js [options]
@@ -27,12 +28,13 @@ server.js [options]
 --help	Return this message and exit.
 `)
 // If --help or -h, echo help text to STDOUT and exit
+
 if (args.help || args.h) {
     console.log(help)
     process.exit(0)
 }
 
-
+// Middlware
 app.use((req, res, next) => {
     let logdata = {
       remoteaddr: req.ip,
