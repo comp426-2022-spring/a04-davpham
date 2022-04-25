@@ -5,9 +5,10 @@ const min = require('minimist')
 const args = min(process.argv.slice(2))
 
 const morgan = require('morgan')
+
 const fs = require('fs')
 
-const db = require('./database.js')
+const db = require('./database.js') 
 
 args['port']
 const port = args.port || 5000
