@@ -73,6 +73,15 @@ if (args.debug) {
   })
 }
 
+if (args.log == 'true'){
+  // Use morgan for logging to files
+  // Create a write stream to append (flags: 'a') to a file
+  const WRITESTREAM = fs.createWriteStream('FILE', { flags: 'a' })
+  
+  // Set up the access logging middleware
+  app.use(morgan('FORMAT', { stream: WRITESTREAM }))
+}
+
 // Start an app server
 const server = app.listen(port, () => {
     console.log('App listening on port %PORT%'.replace('%PORT%',port))
