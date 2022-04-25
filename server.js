@@ -4,6 +4,10 @@ const app = express()
 const min = require('minimist')
 const args = min(process.argv.slice(2))
 
+const morgan = require('morgan')
+
+const db = require('./database.js')
+
 args['port']
 const port = args.port || 5000
 
