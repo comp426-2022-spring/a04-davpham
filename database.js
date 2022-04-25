@@ -6,7 +6,7 @@ const db = new Database('log.db');
 
 // Is the database initialized or do we need to initialize it?
 const stmt = db.prepare(`
-    SELECT name FROM sqlite_master WHERE type='table' and name='userinfo';`
+    SELECT name FROM sqlite_master WHERE type='table' and name='accesslog';`
     );
 
 // Define row using `get()` from better-sqlite3
@@ -17,15 +17,10 @@ if (row === undefined) {
 // Echo information about what you are doing to the console.
     console.log('Your database appears to be empty. I will initialize it now.');
 // Set a const that will contain your SQL commands to initialize the database.
-    const sqlInitOne = `
-        CREATE TABLE userinfo ( id INTEGER PRIMARY KEY, username TEXT, password TEXT );
-        INSERT INTO userinfo (username, password) VALUES ('user1','supersecurepass'),('test','another-super-secret-pass');
-    `
-    const sqlInitTwo = `
+    const sqlInit = `
         CREATE TABLE accesslog ( id INTEGER PRIMARY KEY, remoteaddr TEXT, remoteuser TEXT, time TEXT, method TEXT, url TEXT, protocol TEXT, httpversion TEXT, status TEXT, referer TEXT, useragent TEXT );
     `;
 // Execute SQL commands that we just wrote above.
-    db.exec(sqlInitOne)
     db.exec(sqlInitTwo);
 // Echo information about what we just did to the console.
     //console.log('Your database has been initialized with a new table and two entries containing a username and password.');
