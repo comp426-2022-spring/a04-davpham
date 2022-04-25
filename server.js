@@ -61,6 +61,17 @@ app.use((req, res, next) => {
   next()
 })
 
+// Errors and debug endpoint
+if (args.debug) {
+  app.get('/app/log/access/', (req, res) => {
+      const stmt = db.prepare("SELECT * FROM accesslog").all();
+    res.status(200).json(stmt);
+  })
+
+  app.get('/app/error/', (req, res) => {
+      throw new Error('Error test')
+  })
+}
 
 // Start an app server
 const server = app.listen(port, () => {
